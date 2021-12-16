@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ParseEmailVerifcation</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_id">N5i5QgyKHSUSwxNx41J2tlc2LRqNOQyqTrmsx0h4</string>
+    <string name="back4app_client_key">Ji6obkyj4WqwHpttqhKoaXr7niCPEL3M9YTBHzeU</string>
+</resources>
