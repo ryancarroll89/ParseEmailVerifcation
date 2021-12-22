@@ -17,14 +17,13 @@ import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity
 {
-
     private EditText edtEmail, edtUserName, edtPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ParseInstallation.getCurrentInstallation().saveInBackground();
         edtEmail = findViewById(R.id.edtEmail);
         edtUserName = findViewById(R.id.edtUserName);
@@ -34,13 +33,12 @@ public class MainActivity extends AppCompatActivity
     public void signUpIsPressed(View btnView)
     {
         Toast.makeText(this, "Sign up pressed", Toast.LENGTH_SHORT).show();
-
-        try {
+        try
+        {
             ParseUser user = new ParseUser();
             user.setUsername(edtUserName.getText().toString());
             user.setPassword(edtPassword.getText().toString());
             user.setEmail(edtEmail.getText().toString());
-
             user.signUpInBackground(new SignUpCallback()
             {
                 @Override
@@ -50,26 +48,33 @@ public class MainActivity extends AppCompatActivity
                     {
                         ParseUser.logOut();
                         alertDisplayer("Account created successfully", "please verify email before login", false);
-                    } else {
+                    }
+                    else
+                    {
                         ParseUser.logOut();
                         alertDisplayer("Error - Account failed", "Acct couls not be created: " + e.getMessage(), true);
                     }
                 }
             });
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
 
-    private void alertDisplayer(String title, String message, final boolean error){
+    private void alertDisplayer(String title, String message, final boolean error)
+    {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this)
                 .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton("OK", new DialogInterface.OnClickListener()
+                {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which)
+                    {
                         dialog.cancel();
-                        if(!error) {
+                        if (!error)
+                        {
                             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);

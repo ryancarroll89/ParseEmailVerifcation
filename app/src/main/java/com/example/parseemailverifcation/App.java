@@ -10,7 +10,6 @@ public class App extends Application
     public void onCreate()
     {
         super.onCreate();
-
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_id))
                 // if desired
